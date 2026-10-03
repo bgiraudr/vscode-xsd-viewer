@@ -82,3 +82,4 @@ Here is a simple example of an XSD file:
     </xs:sequence>
   </xs:complexType>
 </xs:schema>
+```
