@@ -1,0 +1,331 @@
+:root {
+  --bg-body: var(--vscode-editor-background, #1e1e1e);
+  --bg-panel: var(--vscode-sideBar-background, #252526);
+  --bg-surface: var(--vscode-editorWidget-background, #2d2d2d);
+
+  --bg-button: var(--vscode-button-background, #0e639c);
+  --fg-button: var(--vscode-button-foreground, #ffffff);
+  --bg-button-hover: var(--vscode-button-hoverBackground, #1177bb);
+
+  --bg-button-sec: var(--vscode-button-secondaryBackground, transparent);
+  --fg-button-sec: var(--vscode-button-secondaryForeground, #cccccc);
+  --bg-button-sec-hover: var(--vscode-button-secondaryHoverBackground, rgba(90, 93, 94, 0.31));
+
+  --text-main: var(--vscode-editor-foreground, #ffffff);
+  --text-subtle: var(--vscode-foreground, #cccccc);
+  --text-muted: var(--vscode-descriptionForeground, #8a8a8a);
+  --text-accent: var(--vscode-textLink-foreground, #3794ff);
+
+  --border-color: var(--vscode-panel-border, var(--vscode-widget-border, #3c3c3c));
+  --border-focus: var(--vscode-focusBorder, #007fd4);
+  --quote-bg: var(--vscode-textBlockQuote-background, #252526);
+  --quote-border: var(--vscode-textBlockQuote-border, #007acc);
+
+  --bg-dropdown: var(--vscode-dropdown-background, #2d2d2d);
+  --fg-dropdown: var(--vscode-dropdown-foreground, #ffffff);
+  --border-dropdown: var(--vscode-dropdown-border, #3c3c3c);
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --shadow-popover: var(--vscode-widget-shadow, 0 2px 8px rgba(0, 0, 0, 0.4));
+
+  --node-complex-bg: var(--vscode-badge-background, #bbdefb);
+  --node-complex-stroke: var(--vscode-symbolIcon-classForeground, #1976d2);
+
+  --node-simple-bg: #c8e6c9;
+  --node-simple-stroke: #388e3c;
+
+  --node-attribute-bg: #fff9c4;
+  --node-attribute-stroke: #fbc02d;
+
+  --node-choice-bg: #d307f7;
+  --node-choice-stroke: #ff0000;
+
+  --node-abstract-bg: #ffe0b2;
+  --node-abstract-stroke: #e65100;
+
+  --node-text-color: var(--text-main, #000000);
+}
+
+body {
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--vscode-font-family, system-ui, sans-serif);
+  font-size: var(--vscode-font-size, 13px);
+  font-weight: var(--vscode-font-weight, normal);
+}
+
+#topBar {
+  display: flex;
+  flex: 0 0 auto;
+  max-height: 280px;
+  border-block-end: 1px solid var(--border-color);
+
+  #configPanel,
+  #previewPanel {
+    flex: 1 1 50%;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+
+  #configPanel {
+    border-inline-end: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .config-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+}
+
+select {
+  background-color: var(--bg-dropdown);
+  color: var(--fg-dropdown);
+  border: 1px solid var(--border-dropdown);
+  border-radius: var(--radius-sm);
+  padding: 4px 8px;
+
+  &:focus {
+    outline: 1px solid var(--border-focus);
+  }
+}
+
+/* === SECTION PREVIEW === */
+
+.preview-placeholder-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding-block: 4px;
+
+  .preview-placeholder {
+    color: var(--text-muted);
+    font-style: italic;
+    margin: 0;
+  }
+}
+
+.preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-block-end: 4px;
+
+  strong {
+    font-size: 14px;
+  }
+
+  .preview-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    button {
+      background-color: var(--bg-button-sec);
+      color: var(--fg-button-sec);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      line-height: 1;
+      padding: 3px 8px;
+      font-size: 12px;
+
+      &:hover {
+        background-color: var(--bg-button-sec-hover);
+      }
+    }
+  }
+}
+
+.preview-type {
+  color: var(--text-accent);
+  margin-block-end: 8px;
+}
+
+.preview-description {
+  background-color: var(--quote-bg);
+  border-inline-start: 3px solid var(--quote-border);
+  padding: 6px 8px;
+  margin-block-end: 12px;
+  white-space: pre-wrap;
+}
+
+.preview-section-title {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  margin-block-end: 4px;
+}
+
+.preview-paths {
+  margin: 0;
+  padding-inline-start: 18px;
+
+  li {
+    margin-block-end: 6px;
+    line-height: 1.4;
+  }
+}
+
+.preview-empty {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.preview-isolated-box {
+  background-color: var(--quote-bg);
+  border-inline-start: 3px solid var(--quote-border);
+  padding: 6px 8px;
+  margin-block-end: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  box-sizing: border-box;
+
+  .preview-isolated-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .preview-isolated-name {
+    color: var(--text-accent);
+    font-size: 13px;
+    font-weight: 600;
+    word-break: break-word;
+  }
+}
+
+.preview-reset-btn {
+  background-color: var(--bg-button-sec);
+  color: var(--fg-button-sec);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+
+  &:hover {
+    background-color: var(--bg-button-sec-hover);
+    color: var(--text-main);
+  }
+}
+
+/* === SECTION GRAPH === */
+
+#graphContainer {
+  flex: 1 1 auto;
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  place-items: center;
+  cursor: grab;
+  user-select: none;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  .node {
+    cursor: pointer;
+  }
+
+  #graph {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-origin: 0 0;
+
+    svg {
+      width: 100% !important;
+      height: 100% !important;
+      max-width: none !important;
+    }
+  }
+}
+
+/* === CONTROLES FLOTTANTS === */
+
+#zoomControls {
+  position: absolute;
+  inset-block-end: 16px;
+  inset-inline-end: 16px;
+  display: flex;
+  gap: 4px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 4px;
+  z-index: 10;
+  box-shadow: var(--shadow-popover);
+
+  button {
+    background-color: var(--bg-button);
+    color: var(--fg-button);
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    padding: 4px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+
+    &:hover {
+      background-color: var(--bg-button-hover);
+    }
+  }
+}
+
+#isolationBanner {
+  position: absolute;
+  inset-block-start: 12px;
+  inset-inline-start: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 6px 10px;
+  z-index: 10;
+  box-shadow: var(--shadow-popover);
+  font-size: 12px;
+  max-width: 60%;
+
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  button {
+    flex-shrink: 0;
+    background-color: var(--bg-button);
+    color: var(--fg-button);
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    padding: 3px 8px;
+    cursor: pointer;
+    font-size: 11px;
+
+    &:hover {
+      background-color: var(--bg-button-hover);
+    }
+  }
+}
