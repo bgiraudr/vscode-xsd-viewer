@@ -1,57 +1,57 @@
 # XSD Viewer & Visualizer for VS Code
 
-**XSD Viewer** est une extension Visual Studio Code permettant de visualiser, sous forme de schémas Mermaid la structure de fichiers XSD. Elle ajoute une nouvelle vue pour tous les fichiers au format `.xsd`.
+**XSD Viewer** is a Visual Studio Code extension designed to visualize XSD file structures using Mermaid diagrams. It adds a dedicated view for all `.xsd` format files.
 
-Elle est conçue pour simplifier la compréhension de XSD complexes en transformant le code XML verbeux en un graphe visuel clair.
+It simplifies the understanding of complex XSD schemas by converting verbose XML code into a clear visual graph.
 
 ---
 
-## Aperçu
+## Overview
 
 <p align="center">
-  <img src="images/image.png" alt="Description de l'image" />
+  <img src="images/image.png" alt="Extension Preview" />
 </p>
 
-> *Visualisation graphique en temps réel d'un fichier XSD avec hiérarchie des types, cardinalités et stéréotypes.*
+> *Real-time graphical visualization of an XSD file featuring type hierarchies, cardinalities, and stereotypes.*
 
 ---
 
-## Fonctionnalités principales
+## Key Features
 
-- **Visualisation de diagrammes en temps réel** : Visualisez instantanément la structure hiérarchique de vos schémas XSD.
-- **Support de l'héritage** : Visualisation des extensions et restrictions de types (`xs:extension`, `xs:restriction`).
-- **Isolation d'élements** : Possibilité d'isoler un noeud et visualiser ses interactions avec ses parents / enfants
-- **Chemins de références** : Visibilité sur les chemins amenant au noeud sélectionné
+- **Real-time Diagram Visualization**: Instantly view the hierarchical structure of your XSD schemas.
+- **Inheritance Support**: Clear visualization of type extensions and restrictions (`xs:extension`, `xs:restriction`).
+- **Element Isolation**: Isolate a specific node to focus on its interactions with parent and child elements.
+- **Reference Paths**: Full visibility into the paths leading to the selected node.
 
 ---
 
-## Blocs XSD pris en charge
+## Supported XSD Elements
 
-L'extension analyse et restitue visuellement les structures XSD suivantes :
+The extension parses and visually represents the following XSD components:
 
-| Élément XSD | Représentation visuelle | Description / Style |
+| XSD Element | Visual Representation | Description / Style |
 | :--- | :--- | :--- |
-| **`xs:element` (Complex)** | Nœud bleu (`fill:#bbdefb`) | Éléments de structure avec sous-éléments. |
-| **`xs:element` (Simple)** | Nœud vert (`fill:#c8e6c9`) | Éléments feuilles (types simples/primitifs). |
-| **`xs:attribute`** | Nœud jaune pointillé (`fill:#fff9c4`) | Attributs rattachés à un complexe. |
-| **`xs:choice`** | Nœud violet (`fill:#e1bee7`) | Blocs de choix exclusif (`«choice»`). |
-| **`xs:complexType` (Abstract)** | Nœud orange pointillé (`fill:#ffe0b2`) | Types abstraits (`«abstract»`). |
-| **`xs:group`** | Nœud cyan (`fill:#b2ebf2`) | Groupes d'éléments réutilisables (`«group»`). |
+| **`xs:element` (Complex)** | Blue node (`fill:#bbdefb`) | Structural elements with child elements. |
+| **`xs:element` (Simple)** | Green node (`fill:#c8e6c9`) | Leaf elements (simple/primitive types). |
+| **`xs:attribute`** | Yellow dashed node (`fill:#fff9c4`) | Attributes attached to a complex type. |
+| **`xs:choice`** | Purple node (`fill:#e1bee7`) | Exclusive choice blocks (`«choice»`). |
+| **`xs:complexType` (Abstract)** | Orange dashed node (`fill:#ffe0b2`) | Abstract base types (`«abstract»`). |
+| **`xs:group`** | Cyan node (`fill:#b2ebf2`) | Reusable element groups (`«group»`). |
 
 ---
 
-## Exemple d'utilisation
+## Usage Example
 
-Voici un exemple simple de fichier XSD :
+Here is a simple example of an XSD file:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="[http://www.w3.org/2001/XMLSchema](http://www.w3.org/2001/XMLSchema)">
 
-  <!-- Élément Racine -->
+  <!-- Root Element -->
   <xs:element name="Commande" type="PurchaseOrderType"/>
 
-  <!-- Type Complexe Abstrait -->
+  <!-- Abstract Complex Type -->
   <xs:complexType name="Personne" abstract="true">
     <xs:sequence>
       <xs:element name="Nom" type="xs:string"/>
@@ -59,7 +59,7 @@ Voici un exemple simple de fichier XSD :
     </xs:sequence>
   </xs:complexType>
 
-  <!-- Type Complexe par Extension -->
+  <!-- Extended Complex Type -->
   <xs:complexType name="Client">
     <xs:complexContent>
       <xs:extension base="Personne">
@@ -71,7 +71,7 @@ Voici un exemple simple de fichier XSD :
     </xs:complexContent>
   </xs:complexType>
 
-  <!-- Type Complexe Principal -->
+  <!-- Main Complex Type -->
   <xs:complexType name="PurchaseOrderType">
     <xs:sequence>
       <xs:element name="Client" type="Client"/>
@@ -82,4 +82,3 @@ Voici un exemple simple de fichier XSD :
     </xs:sequence>
   </xs:complexType>
 </xs:schema>
-```
