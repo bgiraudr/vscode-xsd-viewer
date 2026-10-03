@@ -1,17 +1,22 @@
 {
   "name": "xsd-visualizer",
   "displayName": "xsd-visualizer",
-  "description": "",
+  "description": "XSD Visualizer is a VS Code extension that allows you to visualize the structure of an XSD file in a graphical way. It provides an interactive graph representation of the XSD schema, making it easier to understand the relationships between elements and types.",
   "version": "0.0.1",
+  "license": "SEE LICENSE IN LICENSE FILE",
+  "author": {
+    "name": "bgiraud"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/bgiraudr/vscode-xsd-viewer.git"
   },
   "engines": {
-    "vscode": "^1.130.0"
+    "vscode": "^1.80.0"
   },
   "categories": [
-    "Other"
+    "Visualization",
+    "Programming Languages"
   ],
   "activationEvents": [],
   "main": "./out/extension.js",
